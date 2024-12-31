@@ -1,5 +1,5 @@
 // MainContent.tsx
-import { CheckCircle} from 'lucide-react';
+import { CheckCircle, Play} from 'lucide-react';
 import { useState } from 'react';
 import Modal from './Modal';
 import { useStripePaymentHandler } from '../../utils/usePaymentHandler';
@@ -62,7 +62,7 @@ export default function Tab() {
         {packs.map((pack) => (
           <div key={pack.vues} className="bg-white/10 backdrop-blur-lg rounded-lg overflow-hidden">
             <div className="bg-red-600 p-4 text-center">
-              <h3 className="text-xl">{pack.vues} Vues</h3>
+                <h3 className="text-xl flex items-center justify-center gap-2"><Play className="w-4 h-4" /> {pack.vues} Vues</h3>
             </div>
             <div className="p-6 text-center flex flex-col justify-center items-center">
               <div className="mb-4">

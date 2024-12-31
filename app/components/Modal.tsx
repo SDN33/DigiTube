@@ -53,11 +53,11 @@ const Modal = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice }: Moda
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <div className="relative z-50 w-full max-w-md bg-white rounded-lg shadow-xl p-6 m-4">
         <h2 className="text-2xl mb-6 font-bold text-center">Commander {selectedViews} vues</h2>
-        <div className="bg-black p-4 rounded-lg">
+        <div className="bg-black p-2 rounded-lg">
           <p className="text-center">
             <span className="block text-lg font-semibold mt-4">Pack sélectionné</span>
             <span className="text-2xl font-bold">{selectedViews} vues</span>
-            <span className="block text-lg font-semibold">{selectedPrice}€</span>
+            <span className="block text-xs font-semibold">Livraison sous 24-48h</span>
           </p>
         </div>
 

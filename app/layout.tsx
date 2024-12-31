@@ -26,6 +26,12 @@ export const metadata: Metadata = {
     "likes YouTube",
     "abonnés YouTube",
     "vues réelles YouTube",
+    "acheter vues YouTube pas cher",
+    "acheter des vues YouTube",
+    "vues YouTube pas cher",
+    "acheter des likes YouTube",
+    "likes YouTube pas cher",
+    
   ],
   icons: {
     icon: "/favicon.ico",
@@ -56,7 +62,7 @@ export const metadata: Metadata = {
     title: "DigiTube | Acheter vues YouTube, likes, abonnés",
     description: "Boostez votre chaîne YouTube avec DigiTube. Achetez des vues, des likes, des abonnés pour vos vidéos.",
     images: {
-      url: "https://digitube.buzz/banner.png",
+      url: "https://digitube.buzz/images/banner.png",
       alt: "DigiTube | Acheter vues YouTube, likes, abonnés",
     },
   },

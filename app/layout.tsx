@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description: "Boostez votre chaîne YouTube avec DigiTube. Achetez des vues, des likes, des abonnés pour vos vidéos.",
     images: [
       {
-        url: "https://digitube.buzz/banner.png",
+        url: "https://digitube.buzz/images/banner.png",
         width: 1200,
         height: 630,
         alt: "DigiTube | Acheter vues YouTube, likes, abonnés",

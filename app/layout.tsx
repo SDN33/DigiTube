@@ -16,10 +16,24 @@ export const metadata: Metadata = {
   title: "DigiTube | Acheter vues YouTube, likes, abonnés",
   description: "Boostez votre chaîne YouTube avec DigiTube. Achetez des vues, des likes, des abonnés pour vos vidéos.",
   metadataBase: new URL("https://digitube.buzz"),
-  keywords: ["YouTube", "vues youtube", "likes", "abonnés youtube", "DigiTube, achater vues YouTube, likes YouTube, abonnés YouTube, vues réélles YouTube"],
+  keywords: [
+    "YouTube",
+    "vues youtube",
+    "likes",
+    "abonnés youtube",
+    "DigiTube",
+    "acheter vues YouTube",
+    "likes YouTube",
+    "abonnés YouTube",
+    "vues réelles YouTube",
+  ],
   icons: {
-    icon: "/favicon.ico"
+    icon: "/favicon.ico",
   },
+  alternates: {
+    canonical: "https://digitube.buzz",
+  },
+  robots: "index, follow",
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -45,11 +59,8 @@ export const metadata: Metadata = {
       url: "https://digitube.buzz/banner.png",
       alt: "DigiTube | Acheter vues YouTube, likes, abonnés",
     },
-
   },
 };
-
-<meta name="image" property="og:image" content="https://digitube.buzz/banner.png" />
 
 export default function RootLayout({
   children,
@@ -58,6 +69,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

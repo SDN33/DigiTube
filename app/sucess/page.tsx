@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface SessionData {
@@ -9,8 +9,8 @@ interface SessionData {
 }
 
 export default function SuccessPage() {
-  const router = useRouter();
-  const { session_id } = router.query;
+  const searchParams = useSearchParams();
+  const session_id = searchParams?.get('session_id');
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
 
   useEffect(() => {

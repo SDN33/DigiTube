@@ -1,53 +1,126 @@
 import { useState } from 'react';
-import { Lock } from 'lucide-react';
+import { Lock, AlertCircle } from 'lucide-react';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (url: string) => void;
+  onSubmit: (details: { url: string; email: string; views: string; amount: string }) => void;
+  selectedViews: string;
+  selectedPrice: string;
 }
 
-const Modal = ({ isOpen, onClose, onSubmit }: ModalProps) => {
+const Modal = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice }: ModalProps) => {
   const [url, setUrl] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateYoutubeUrl = (url: string): boolean => {
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/;
+    return youtubeRegex.test(url);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(url);
-    onClose();
+    setError(null);
+    setIsProcessing(true);
+
+    if (!validateYoutubeUrl(url)) {
+      setError("L'URL YouTube n'est pas valide. Veuillez entrer une URL de vidéo YouTube valide.");
+      setIsProcessing(false);
+      return;
+    }
+
+    try {
+      await onSubmit({
+        url,
+        email,
+        views: selectedViews,
+        amount: selectedPrice
+      });
+      onClose();
+    } catch {
+      setError("Une erreur est survenue lors du traitement de votre demande.");
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg text-black w-full">
-        <h2 className="text-xl mb-4">Entrez l&apos;URL de votre vidéo YouTube</h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative z-50 w-full max-w-md bg-white rounded-lg shadow-xl p-6 m-4">
+        <h2 className="text-2xl mb-6 font-bold text-center">Commander {selectedViews} vues</h2>
+        <div className="bg-black p-4 rounded-lg">
+          <p className="text-center">
+            <span className="block text-lg font-semibold mt-4">Pack sélectionné</span>
+            <span className="text-2xl font-bold">{selectedViews} vues</span>
+            <span className="block text-lg font-semibold">{selectedPrice}€</span>
+          </p>
+        </div>
+
         <form onSubmit={handleSubmit}>
-          <input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://www.youtube.com/watch?v=..."
-            className="border p-2 w-full mb-4"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Votre email"
-            className="border p-2 w-full mb-4"
-            required
-          />
-          <div className="flex flex-col gap-2 items-center">
-            <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded flex items-center gap-2 justify-center w-48">
-              <span>Acheter</span> <Lock className="w-4 h-4" />
+          <div className="mb-2">
+            <label htmlFor="url" className="block text-sm font-medium text-gray-600 mt-2">URL de votre vidéo</label>
+            <input
+              id="url"
+              type="url"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="https://www.youtube.com/watch?v=..."
+              className="border p-3 w-full rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="url" className="block text-sm font-medium text-gray-600 mt-2">Votre email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="exemple@email.com"
+              className="border p-3 w-full rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
+          </div>
+
+          {error && (
+            <div className="mb-4 p-3 bg-red-50 text-red-600 rounded-lg flex items-center gap-2">
+              <AlertCircle className="w-5 h-5" />
+              <span>{error}</span>
+            </div>
+          )}
+
+          <div className="flex flex-col gap-3">
+            <button
+              type="submit"
+              disabled={isProcessing}
+              className="w-full bg-black hover:bg-gray-700 text-white py-3 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              {isProcessing ? (
+                'Traitement en cours...'
+              ) : (
+                <>
+                  <span>Payer {selectedPrice}€</span>
+                  <Lock className="w-4 h-4" />
+                </>
+              )}
             </button>
-            <button type="button" onClick={onClose} className="py-2 px-4 rounded bg-gray-300 hover:bg-gray-400 w-48">
+            <button
+              type="button"
+              onClick={onClose}
+              className="w-full py-3 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+            >
               Annuler
             </button>
           </div>
 
-          <p className="text-sm text-gray-500 mb-4 mt-4">
-            Nous avons besoin de l&apos;URL de votre vidéo pour ajouter les vues
+          <p className="text-sm text-gray-500 mt-4 text-center">
+            Paiement sécurisé • Livraison sous 24-48h
           </p>
         </form>
       </div>

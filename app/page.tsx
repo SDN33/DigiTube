@@ -6,24 +6,103 @@ import Header from './components/Header';
 import Modal from './components/Modal';
 
 
-// Main Content Component
-const MainContent = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
+interface PaymentDetails {
+  url: string;
+  amount: string;
+  views: string;
+}
 
-  const handlePayment = (url: string) => {
-    console.log("URL soumise :", url);
-    // Logique PayPal à ajouter ici
+interface PaymentHandlerProps {
+  onSuccess?: (details: PaymentDetails) => void;
+  onError?: (error: string) => void;
+}
+
+const usePaymentHandler = ({ onSuccess, onError }: PaymentHandlerProps = {}) => {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const validateYoutubeUrl = (url: string): boolean => {
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/;
+    return youtubeRegex.test(url);
+  };
+
+  const getPackDetails = (views: string): { amount: string } | null => {
+    const packMapping: Record<string, string> = {
+      "100": "2",
+      "1,000": "15",
+      "10,000": "79",
+      "100,000": "799"
+    };
+
+    return views in packMapping ? { amount: packMapping[views] } : null;
+  };
+
+  const handlePayment = async (url: string, selectedViews: string) => {
+    try {
+      setIsProcessing(true);
+      setError(null);
+
+      if (!validateYoutubeUrl(url)) {
+        throw new Error("L'URL YouTube n'est pas valide. Veuillez entrer une URL de vidéo YouTube valide.");
+      }
+
+      const packDetails = getPackDetails(selectedViews);
+      if (!packDetails) {
+        throw new Error("Pack de vues non valide.");
+      }
+
+      const paymentDetails: PaymentDetails = {
+        url,
+        amount: packDetails.amount,
+        views: selectedViews
+      };
+
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      onSuccess?.(paymentDetails);
+      return paymentDetails;
+
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Une erreur est survenue lors du traitement du paiement.";
+      setError(errorMessage);
+      onError?.(errorMessage);
+      throw err;
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  return {
+    handlePayment,
+    isProcessing,
+    error,
+    validateYoutubeUrl
+  };
+};
+
+const MainContent = ({ views, price }: { views: string; price: string }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { handlePayment } = usePaymentHandler();
+
+  const handleSubmit = async (details: { url: string; email: string; views: string; amount: string }) => {
+    await handlePayment(details.url, details.views);
   };
 
   return (
     <>
       <button
-        onClick={() => setModalOpen(true)}
-        className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full transition-colors"
+      onClick={() => setModalOpen(true)}
+      className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full transition-colors"
       >
-        Acheter maintenant
+      Acheter maintenant
       </button>
-      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} onSubmit={handlePayment} />
+      <Modal
+      isOpen={isModalOpen}
+      onClose={() => setModalOpen(false)}
+      onSubmit={handleSubmit}
+      selectedViews={views}
+      selectedPrice={price}
+      />
     </>
   );
 };
@@ -73,7 +152,7 @@ const Main = () => (
                   Garantie & Sécurisé
                 </li>
               </ul>
-              <MainContent />
+              <MainContent views={pack.vues} price={pack.prix} />
             </div>
           </div>
         ))}

@@ -1,5 +1,7 @@
 'use client';
 import { useState } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -22,8 +24,10 @@ export default function ContactPage() {
     }));
   };
 
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="h-screen w-screen text-center bg-gradient-to-t from-purple-900 to-[#5e17eb] text-white">
+      <Header />
       <h1 className="text-3xl font-bold mb-6">Contactez-nous</h1>
       <div className="max-w-lg mx-auto">
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -64,12 +68,14 @@ export default function ContactPage() {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
+            className="bg-red-600 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
           >
             Envoyer
           </button>
         </form>
       </div>
+      <br /><br /><br />
+      <Footer />
     </div>
   );
 }

@@ -48,6 +48,8 @@ export const metadata: Metadata = {
   },
 };
 
+<meta name="image" property="og:image" content="https://digitube.buzz/banner.png" />
+
 export default function RootLayout({
   children,
 }: Readonly<{

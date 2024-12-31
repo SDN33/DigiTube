@@ -65,7 +65,7 @@ export default function Tab() {
             <div className="p-6 text-center flex flex-col justify-center items-center">
               <div className="mb-4">
                 <span className="text-4xl font-bold">{pack.prix}€</span>
-                <div className="text-sm text-gray-300">Prix normal : {pack.prixNormal}€</div>
+                <div className="text-sm text-gray-300">Prix normal : <s>{pack.prixNormal}</s>€</div>
               </div>
               <ul className="text-center space-y-3 mb-6">
                 <li className="flex items-center">

@@ -16,13 +16,35 @@ export const metadata: Metadata = {
   title: "DigiTube | Acheter vues YouTube, likes, abonnés",
   description: "Boostez votre chaîne YouTube avec DigiTube. Achetez des vues, des likes, des abonnés pour vos vidéos.",
   metadataBase: new URL("https://digitube.buzz"),
+  icons: {
+    icon: "/favicon.ico"
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: "DigiTube",
+    url: "https://digitube.buzz",
+    title: "DigiTube | Acheter vues YouTube, likes, abonnés",
+    description: "Boostez votre chaîne YouTube avec DigiTube. Achetez des vues, des likes, des abonnés pour vos vidéos.",
+    images: [
+      {
+        url: "https://digitube.buzz/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "DigiTube | Acheter vues YouTube, likes, abonnés",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@digitube",
+    title: "DigiTube | Acheter vues YouTube, likes, abonnés",
+    description: "Boostez votre chaîne YouTube avec DigiTube. Achetez des vues, des likes, des abonnés pour vos vidéos.",
+    images: {
+      url: "https://digitube.buzz/banner.png",
+      alt: "DigiTube | Acheter vues YouTube, likes, abonnés",
+    },
+
   },
 };
 

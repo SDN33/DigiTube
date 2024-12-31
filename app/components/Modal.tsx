@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Lock, AlertCircle } from 'lucide-react';
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
+
 
 interface ModalProps {
   isOpen: boolean;
@@ -101,14 +103,39 @@ const Modal = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice }: Moda
               disabled={isProcessing}
               className="w-full bg-black hover:bg-gray-700 text-white py-3 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {isProcessing ? (
+                {isProcessing ? (
                 'Traitement en cours...'
-              ) : (
+                ) : (
                 <>
+                  <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '' }}>
+                    <PayPalButtons
+                  style={{ layout: "horizontal" }}
+                  createOrder={(_data, actions) => {
+                    return actions.order.create({
+                    intent: "CAPTURE",
+                    purchase_units: [
+                      {
+                      amount: {
+                        currency_code: "EUR",
+                        value: selectedPrice
+                      }
+                      }
+                    ]
+                    });
+                  }}
+                    onApprove={async (_data, actions) => {
+                      setIsProcessing(true);
+                      if (actions.order) {
+                        await actions.order.capture();
+                        await handleSubmit({ preventDefault: () => {} } as React.FormEvent);
+                      }
+                    }}
+                  />
+                  </PayPalScriptProvider>
                   <span>Payer {selectedPrice}€</span>
                   <Lock className="w-4 h-4" />
                 </>
-              )}
+                )}
             </button>
             <button
               type="button"

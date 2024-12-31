@@ -1,7 +1,6 @@
 'use client';
-import { TrendingUp, CheckCircle, AlertCircle, Youtube, Lock } from 'lucide-react';
+import { TrendingUp, CheckCircle, AlertCircle, Youtube, Lock, MessageCircleHeart } from 'lucide-react';
 import { useState } from 'react';
-import Image from 'next/image';
 
 // Modal Component
 interface ModalProps {
@@ -109,12 +108,10 @@ const Main = () => (
       <div className="flex flex-col items-center pb-8">
         <h2 className="text-3xl lg:text-5xl mb-4 font-bold">Acheter des Vues Youtube pour vos vidéos</h2>
         <p className="text-xl text-gray-200 text-center">
-          Avec plus de 3 milliards de requêtes traitées chaque mois,<br />Youtube est devenu le 2ème moteur de recherche.
+          Nous vous proposons d&apos;acheter des vues YouTube de haute qualité 100% réelles et propulsées par des utilisateurs réels.
+          <br /><br /> Augmentez votre visibilité sur YouTube
           <br /><br /> Explosez votre compteur !
         </p>
-        <div className='flex justify-center'>
-          <Image src="/Images/paypal.png" alt="Paypal" width={200} height={100} />
-        </div>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {packs.map((pack) => (
@@ -175,8 +172,8 @@ const Main = () => (
       affichées sur votre vidéo YouTube. Les vues achetées peuvent être retardées ou supprimées par YouTube.
     </p>
     <br />
-    <br /><br />
-
+    <br />
+    <br />
     <div className='border-t border-gray-800'>
       <div className='max-w-6xl mx-auto px-4 py-8 mt-8'>
         <h2 id="about" className='text-2xl lg:text-3xl mb-4 text-center font-bold'>À PROPOS</h2>
@@ -199,6 +196,36 @@ const Main = () => (
         <p className='text-lg text-gray-200 text-center mb-20 transition-transform duration-300 hover:scale-105 cursor-pointer'>
           L&apos;achat de vues YouTube sur DigiTube est simple et rapide. Il vous suffit de choisir le nombre de vues que vous souhaitez acheter, de saisir l&apos;URL de votre vidéo YouTube et de procéder au paiement. Une fois votre paiement effectué, nous commencerons à ajouter des vues à votre vidéo YouTube. Vous verrez les vues augmenter en temps réel et vous pourrez suivre l&apos;évolution de votre vidéo sur YouTube Analytics. Nos vues sont 100% réelles et proviennent de comptes YouTube actifs. Vous pouvez acheter des vues YouTube en toute confiance sur DigiTube.
         </p>
+
+        <br />
+        <div className='border-t border-gray-800'></div>
+        <h2 id="about" className='text-2xl lg:text-3xl mb-4 text-center font-bold py-8 mt-8'>Quelques Témoignages</h2>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12'>
+          <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
+            <div className='flex items-center mb-4'>
+            <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <h3 className='text-xl font-semibold'>Témoignage 1</h3>
+            </div>
+            <p>Les vues YouTube que j&apos;ai achetées sur DigiTube ont vraiment aidé à augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ceux qui veulent augmenter leur nombre de vues sur YouTube.</p>
+            <p className='mt-4 text-sm text-gray-300'>- Sariel B.</p>
+          </div>
+          <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
+            <div className='flex items-center mb-4'>
+            <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <h3 className='text-xl font-semibold'>Témoignage 2</h3>
+            </div>
+            <p>Les vues YouTube que j&apos;ai achetées sur DigiTube ont vraiment aidé à augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ceux qui veulent augmenter leur nombre de vues sur YouTube.</p>
+            <p className='mt-4 text-sm text-gray-300'>- Lucas M.</p>
+          </div>
+          <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
+            <div className='flex items-center mb-4'>
+              <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <h3 className='text-xl font-semibold'>Témoignage 3</h3>
+            </div>
+            <p>Les vues YouTube que j&apos;ai achetées sur DigiTube ont vraiment aidé à augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ceux qui veulent augmenter leur nombre de vues sur YouTube.</p>
+            <p className='mt-4 text-sm text-gray-300'>- Joseph D.</p>
+          </div>
+        </div>
       </div>
     </div>
   </main>

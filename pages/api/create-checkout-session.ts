@@ -1,4 +1,3 @@
-// pages/api/create-checkout-session.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { PRICE_MAP } from '../../utils/constants';
@@ -32,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               product_data: {
                 name: `${views} Vues`,
               },
-              unit_amount: priceData.unit_amount
+              unit_amount: priceData.unit_amount,
             },
             quantity: 1,
           },
@@ -40,6 +39,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         mode: 'payment',
         success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/cancel`,
+        metadata: {
+          video_url: url, // Ajout de l'URL de la vidéo dans les metadata
+        },
       });
 
       res.status(200).json({ sessionId: session.id });

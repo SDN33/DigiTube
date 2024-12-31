@@ -45,12 +45,14 @@ export interface Pack {
 
 
 export const packs: Pack[] = [
-
-  { vues: "100", prix: 2, prixNormal: 4 },
-  { vues: "1,000", prix: 10, prixNormal: 15 },
-  { vues: "10,000", prix: 79, prixNormal: 150 },
-  { vues: "100,000", prix: 599, prixNormal: 799 },
-
+  { vues: "1,000", prix: 7, prixNormal: 9 },
+  { vues: "2,500", prix: 17.5, prixNormal: 19 },
+  { vues: "5,000", prix: 32.5, prixNormal: 45 },
+  { vues: "10,000", prix: 54.5, prixNormal: 75 },
+  { vues: "25,000", prix: 115, prixNormal: 159 },
+  { vues: "100,000", prix: 298.5, prixNormal: 399 },
+  { vues: "250,000", prix: 823.5, prixNormal: 823.5 },
+  { vues: "500,000", prix: 1298.5, prixNormal: 1598.5 },
 ];
 
 export default function Tab() {

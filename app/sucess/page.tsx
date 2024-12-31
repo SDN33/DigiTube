@@ -8,6 +8,7 @@ interface SessionData {
   videoUrl: string;
 }
 
+
 export default function SuccessPage() {
   const searchParams = useSearchParams();
   const session_id = searchParams?.get('session_id');

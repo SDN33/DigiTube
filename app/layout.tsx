@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "DigiTube | Acheter vues YouTube, likes, abonnés",
   description: "Boostez votre chaîne YouTube avec DigiTube. Achetez des vues, des likes, des abonnés pour vos vidéos.",
   metadataBase: new URL("https://digitube.buzz"),
+  keywords: ["YouTube", "vues", "likes", "abonnés", "DigiTube, achater vues YouTube, likes YouTube, abonnés YouTube, vues réélles YouTube"],
   icons: {
     icon: "/favicon.ico"
   },

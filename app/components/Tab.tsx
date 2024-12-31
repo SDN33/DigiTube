@@ -46,13 +46,13 @@ export interface Pack {
 
 export const packs: Pack[] = [
   { vues: "1,000", prix: 7, prixNormal: 9 },
-  { vues: "2,500", prix: 17.5, prixNormal: 19 },
-  { vues: "5,000", prix: 32.5, prixNormal: 45 },
-  { vues: "10,000", prix: 54.5, prixNormal: 75 },
+  { vues: "2,500", prix: 17.50, prixNormal: 19 },
+  { vues: "5,000", prix: 32.50, prixNormal: 45 },
+  { vues: "10,000", prix: 54.50, prixNormal: 75 },
   { vues: "25,000", prix: 115, prixNormal: 159 },
-  { vues: "100,000", prix: 298.5, prixNormal: 399 },
-  { vues: "250,000", prix: 823.5, prixNormal: 823.5 },
-  { vues: "500,000", prix: 1298.5, prixNormal: 1598.5 },
+  { vues: "100,000", prix: 298.50, prixNormal: 399 },
+  { vues: "250,000", prix: 823.50, prixNormal: 823.50 },
+  { vues: "500,000", prix: 1298.50, prixNormal: 1598.50 },
 ];
 
 export default function Tab() {
@@ -66,8 +66,8 @@ export default function Tab() {
             </div>
             <div className="p-6 text-center flex flex-col justify-center items-center">
               <div className="mb-4">
-                <span className="text-4xl font-bold">{pack.prix}€</span>
-                <div className="text-sm text-gray-300">Prix normal : <s>{pack.prixNormal}</s>€</div>
+                <span className="text-4xl font-bold">{pack.prix.toFixed(2)}€</span>
+                <div className="text-sm text-gray-300">Prix normal : <s>{pack.prixNormal.toFixed(2)}</s>€</div>
               </div>
               <ul className="text-center space-y-3 mb-6">
                 <li className="flex items-center">

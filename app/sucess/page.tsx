@@ -1,24 +1,17 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
-interface SessionData {
-  productName: string;
-  videoUrl: string;
-}
+import { useEffect } from 'react';
 
 
 export default function SuccessPage() {
   const searchParams = useSearchParams();
   const session_id = searchParams?.get('session_id');
-  const [sessionData, setSessionData] = useState<SessionData | null>(null);
 
   useEffect(() => {
     if (session_id) {
       fetch(`/api/retrieve-session?session_id=${session_id}`)
         .then(response => response.json())
-        .then(data => setSessionData(data))
         .catch(error => console.error('Error fetching session data:', error));
     }
   }, [session_id]);
@@ -26,14 +19,12 @@ export default function SuccessPage() {
   return (
     <div>
       <h1>Paiement Réussi !</h1>
-      {sessionData ? (
+      {session_id ? (
         <div>
           <p>Merci pour votre achat !</p>
-          <p>Nom du produit : {sessionData.productName}</p>
-          <p>URL de la vidéo : <a href={sessionData.videoUrl} target="_blank" rel="noopener noreferrer">{sessionData.videoUrl}</a></p>
         </div>
       ) : (
-        <p>Chargement des informations de votre session...</p>
+        <p>Redirection en cours...</p>
       )}
     </div>
   );

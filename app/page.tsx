@@ -117,7 +117,7 @@ const packs = [
 
 // Main Component
 const Main = () => (
-  <main className="min-h-screen bg-gradient-to-br from-purple-900 to-blue-600 text-white">
+  <main className="min-h-screen bg-gradient-to-t from-purple-900 to-[#5e17eb] text-white">
     <div className="max-w-6xl mx-auto px-4">
       <Header />
       <div className="flex flex-col items-center pb-8">

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Modal from './components/Modal';
+import Image from 'next/image';
 
 
 interface PaymentDetails {
@@ -190,6 +191,8 @@ const Main = () => (
     <br />
     <div className='border-t border-gray-800'>
       <div className='max-w-6xl mx-auto px-4 py-8 mt-8'>
+        <Image src='/images/banner.png' alt='DigiTube | Acheter vues YouTube, likes, abonnés' width={1200} height={630} />
+        <br /><br />
         <h2 id="about" className='text-2xl lg:text-3xl mb-4 text-center font-bold'>À PROPOS</h2>
         <p className='text-2xl text-gray-200 text-center'>
           Avec DigiTube vous pouvez acheter des vues YouTube de haute qualité 100% réelles

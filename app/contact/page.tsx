@@ -37,6 +37,7 @@ export default function ContactPage() {
               type="text"
               id="name"
               name="name"
+              placeholder='Votre nom'
               value={formData.name}
               onChange={handleChange}
               className="w-full p-2 border rounded text-black"
@@ -49,6 +50,7 @@ export default function ContactPage() {
               type="email"
               id="email"
               name="email"
+              placeholder='Votre email'
               value={formData.email}
               onChange={handleChange}
               className="w-full p-2 border rounded text-black"
@@ -60,6 +62,7 @@ export default function ContactPage() {
             <textarea
               id="message"
               name="message"
+              placeholder='Votre message'
               value={formData.message}
               onChange={handleChange}
               className="w-full p-2 border rounded h-32 text-black"

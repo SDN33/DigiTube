@@ -66,29 +66,54 @@ const Main = () => (
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12'>
           <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
             <div className='flex items-center mb-4'>
-            <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 1</h3>
             </div>
-            <p>Après avoir acheté des vues YouTube sur DigiTube, j&apos;ai bien reçu mes vues et j&apos;ai pu augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ! </p>
-            <p className='mt-4 text-sm text-gray-300'>- Sariel B.</p>
+            <p>Je ne savais pas trop à quoi m’attendre en achetant des vues, mais DigiTube a vraiment livré. Les vues sont arrivées rapidement et ma vidéo a gagné en popularité. Ça m’a donné un coup de pouce pour lancer ma chaîne. Merci !</p>
+            <p className='mt-4 text-sm text-gray-300'>- Claire L.</p>
           </div>
           <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
             <div className='flex items-center mb-4'>
-            <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 2</h3>
             </div>
-            <p>Un grand merci à DigiTube pour m&apos;avoir aidé à augmenter le nombre de vues sur ma chaîne YouTube. Les vues que j&apos;ai achetées étaient de haute qualité et ont vraiment aidé à augmenter ma visibilité sur YouTube.</p>
-            <p className='mt-4 text-sm text-gray-300'>- Lucas M.</p>
+            <p>Honnêtement, j’étais sceptique au début, mais après avoir vu ma vidéo passer de 200 à 10 000 vues, je suis convaincu ! Le service est simple et rapide, et les vues semblent vraiment authentiques. Une très bonne expérience.</p>
+            <p className='mt-4 text-sm text-gray-300'>- Yann P.</p>
           </div>
           <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
             <div className='flex items-center mb-4'>
               <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 3</h3>
             </div>
-            <p>Les vues YouTube que j&apos;ai achetées sur DigiTube ont vraiment aidé à augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ceux qui veulent augmenter leur nombre de vues sur YouTube.</p>
-            <p className='mt-4 text-sm text-gray-300'>- Joseph D.</p>
+            <p>J’ai utilisé DigiTube pour booster une de mes vidéos avant un lancement important. Les résultats ont dépassé mes attentes ! Ça m’a permis d’attirer un public plus large. Je referai appel à eux, c’est sûr.</p>
+            <p className='mt-4 text-sm text-gray-300'>- Sonia T.</p>
           </div>
-        </div>
+          <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
+            <div className='flex items-center mb-4'>
+              <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <h3 className='text-xl font-semibold'>Témoignage 4</h3>
+            </div>
+            <p>Je gère une petite chaîne de musique et grâce à DigiTube, mes morceaux ont enfin obtenu la visibilité qu’ils méritent. Le service client est super réactif aussi, ce qui est un plus. Je recommande sans hésiter !</p>
+            <p className='mt-4 text-sm text-gray-300'>- Maxime R.</p>
+          </div>
+          <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
+            <div className='flex items-center mb-4'>
+              <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <h3 className='text-xl font-semibold'>Témoignage 5</h3>
+            </div>
+            <p>Pour ma chaîne culinaire, je cherchais à obtenir plus d’engagement sur mes vidéos. DigiTube m’a beaucoup aidée : non seulement mes vues ont augmenté, mais j’ai aussi remarqué plus de commentaires et de likes. Super !</p>
+            <p className='mt-4 text-sm text-gray-300'>- Élodie G.</p>
+          </div>
+          <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
+            <div className='flex items-center mb-4'>
+              <MessageCircleHeart className='w-8 h-8 mr-2' />
+              <h3 className='text-xl font-semibold'>Témoignage 6</h3>
+            </div>
+            <p>Au départ, je ne voulais pas payer pour des vues, mais DigiTube m’a vraiment fait changer d’avis. Mes vidéos semblent plus professionnelles et je gagne maintenant des abonnés de manière organique. Très satisfait !</p>
+            <p className='mt-4 text-sm text-gray-300'>- Julien F.</p>
+          </div>
+        </div>        
+
       </div>
     </div>
   </main>

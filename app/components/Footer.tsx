@@ -43,7 +43,7 @@ const Footer = () => (
         © 2021 DigiTube. Tous droits réservés. Paiements sécurisés via PayPal.
       </p>
       <p className="text-sm text-center flex align-center justify-center col-span-4">
-          Site propulsé par &nbsp;<a href="https://stillinov.com" className="underline">Still-Inov Agency</a>
+          Site propulsé par &nbsp;<a href="https://stillinov.com" className="underline">Still-inov Agency</a>
       </p>
     </div>
   </footer>

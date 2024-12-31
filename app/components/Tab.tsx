@@ -47,7 +47,7 @@ export interface Pack {
 export const packs: Pack[] = [
 
   { vues: "100", prix: 2, prixNormal: 4 },
-  { vues: "1,000", prix: 15, prixNormal: 30 },
+  { vues: "1,000", prix: 10, prixNormal: 15 },
   { vues: "10,000", prix: 79, prixNormal: 150 },
   { vues: "100,000", prix: 599, prixNormal: 799 },
 

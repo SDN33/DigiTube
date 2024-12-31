@@ -1,61 +1,10 @@
 'use client';
-import { TrendingUp, CheckCircle, AlertCircle, Youtube, Lock, MessageCircleHeart } from 'lucide-react';
+import { TrendingUp, CheckCircle, AlertCircle, MessageCircleHeart } from 'lucide-react';
 import { useState } from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Modal from './components/Modal';
 
-// Modal Component
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onSubmit: (url: string) => void;
-}
-
-const Modal = ({ isOpen, onClose, onSubmit }: ModalProps) => {
-  const [url, setUrl] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(url);
-    onClose();
-  };
-
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg text-black w-full">
-        <h2 className="text-xl mb-4">Entrez l&apos;URL de votre vidéo YouTube</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://www.youtube.com/watch?v=..."
-            className="border p-2 w-full mb-4"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Votre email"
-            className="border p-2 w-full mb-4"
-            required
-          />
-          <div className="flex flex-col gap-2 items-center">
-            <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded flex items-center gap-2 justify-center w-48">
-              <span>Acheter</span> <Lock className="w-4 h-4" />
-            </button>
-            <button type="button" onClick={onClose} className="py-2 px-4 rounded bg-gray-300 hover:bg-gray-400 w-48">
-              Annuler
-            </button>
-          </div>
-
-          <p className="text-sm text-gray-500 mb-4 mt-4">
-            Nous avons besoin de l&apos;URL de votre vidéo pour ajouter les vues
-          </p>
-        </form>
-      </div>
-    </div>
-  );
-};
 
 // Main Content Component
 const MainContent = () => {
@@ -83,22 +32,9 @@ const MainContent = () => {
 const packs = [
   { vues: "100", prix: "2", prixNormal: "5" },
   { vues: "1,000", prix: "15", prixNormal: "18" },
-  { vues: "10,000", prix: "80", prixNormal: "99" },
-  { vues: "100,000", prix: "800", prixNormal: "999" },
+  { vues: "10,000", prix: "79", prixNormal: "99" },
+  { vues: "100,000", prix: "799", prixNormal: "999" },
 ];
-// Header Component
-const Header = () => (
-  <header className="text-center py-16">
-    <div className="flex items-center justify-center mb-6">
-      <Youtube className="w-12 h-12 text-red-500 mr-2" />
-      <h1 className="text-5xl font-bold">DigiTube</h1>
-    </div>
-    <nav>
-      <a href="#about" className="mr-4 hover:underline">À PROPOS</a>
-      <a href="#contact" className="hover:underline">CONTACT</a>
-    </nav>
-  </header>
-);
 
 // Main Component
 const Main = () => (
@@ -193,7 +129,7 @@ const Main = () => (
           Comment fonctionne l&apos;achat de vues YouTube sur DigiTube ?
         </p>
         <p className='text-lg text-gray-200 text-center mb-20 transition-transform duration-300 hover:scale-105 cursor-pointer'>
-          L&apos;achat de vues YouTube sur DigiTube est simple et rapide. Il vous suffit de choisir le nombre de vues que vous souhaitez acheter, de saisir l&apos;URL de votre vidéo YouTube et de procéder au paiement. Une fois votre paiement effectué, nous commencerons à ajouter des vues à votre vidéo YouTube. Vous verrez les vues augmenter en temps réel et vous pourrez suivre l&apos;évolution de votre vidéo sur YouTube Analytics. Nos vues sont 100% réelles et proviennent de comptes YouTube actifs. Vous pouvez acheter des vues YouTube en toute confiance sur DigiTube.
+          L&apos;achat de vues YouTube sur DigiTube est simple et rapide. Il vous suffit de choisir le nombre de vues que vous souhaitez acheter, de saisir l&apos;URL de votre vidéo YouTube et de procéder au paiement. Une fois votre paiement effectué, nous commencerons à ajouter des vues à votre vidéo YouTube dans un delais de 24h/48h . Vous verrez les vues augmenter en temps réel et vous pourrez suivre l&apos;évolution de votre vidéo sur YouTube Analytics. Nos vues sont 100% réelles et proviennent de comptes YouTube actifs. Vous pouvez acheter des vues YouTube en toute confiance sur DigiTube.
         </p>
 
         <br />
@@ -205,7 +141,7 @@ const Main = () => (
             <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 1</h3>
             </div>
-            <p>Les vues YouTube que j&apos;ai achetées sur DigiTube ont vraiment aidé à augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ceux qui veulent augmenter leur nombre de vues sur YouTube.</p>
+            <p>Après avoir acheté des vues YouTube sur DigiTube, j&apos;ai bien reçu mes vues et j&apos;ai pu augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ! </p>
             <p className='mt-4 text-sm text-gray-300'>- Sariel B.</p>
           </div>
           <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
@@ -213,7 +149,7 @@ const Main = () => (
             <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 2</h3>
             </div>
-            <p>Les vues YouTube que j&apos;ai achetées sur DigiTube ont vraiment aidé à augmenter la visibilité de ma chaîne. Je recommande vivement DigiTube à tous ceux qui veulent augmenter leur nombre de vues sur YouTube.</p>
+            <p>Un grand merci à DigiTube pour m&apos;avoir aidé à augmenter le nombre de vues sur ma chaîne YouTube. Les vues que j&apos;ai achetées étaient de haute qualité et ont vraiment aidé à augmenter ma visibilité sur YouTube.</p>
             <p className='mt-4 text-sm text-gray-300'>- Lucas M.</p>
           </div>
           <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
@@ -228,56 +164,6 @@ const Main = () => (
       </div>
     </div>
   </main>
-);
-
-//Footer Component
-const Footer = () => (
-  <footer className="p-6 bg-gray-800 text-white">
-    <div className="max-w-6xl mx-auto grid grid-cols-4 gap-8 my-10">
-      <div>
-        <div className="flex items-center mb-4">
-          <Youtube className="w-10 h-10 text-red-500 mr-2" />
-          <h1 className="text-2xl font-bold">DigiTube</h1>
-        </div>
-        <address className="not-italic text-sm">
-          Still-Inov Agency<br />
-          Route de Madirac<br />
-          33880 Censot, France<br />
-          <a href="mailto:stillinovagency@gmail.com" className="underline">Email</a>
-        </address>
-      </div>
-
-      <div>
-        <h2 className="text-lg font-bold mb-4">À PROPOS</h2>
-        <p className="text-sm">
-          Avec DigiTube vous pouvez acheter des vues YouTube de haute qualité 100% réelles et propulsées par des utilisateurs réels.
-        </p>
-      </div>
-
-      <div>
-        <h2 className="text-lg font-bold mb-4">Nos FAQ</h2>
-        <ul className="text-sm space-y-2">
-          <li><a href="#" className="hover:underline">Pourquoi acheter des vues YouTube ?</a></li>
-          <li><a href="#" className="hover:underline">Comment fonctionne DigiTube ?</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h2 className="text-lg font-bold mb-4">NOS SERVICES</h2>
-        <p className="text-sm">ACHAT VUES 100% RÉEL YOUTUBE</p>
-        <nav className="mt-4 space-x-4 text-sm">
-          <a href="#about" className="hover:underline">À PROPOS</a>
-          <a href="#contact" className="hover:underline">CONTACT</a>
-        </nav>
-      </div>
-      <p className="mt-4 text-sm text-center flex align-center justify-center col-span-4">
-        © 2021 DigiTube. Tous droits réservés. Paiements sécurisés via PayPal.
-      </p>
-      <p className="text-sm text-center flex align-center justify-center col-span-4">
-          Site propulsé par &nbsp;<a href="https://stillinov.com" className="underline">Still-Inov Agency</a>
-      </p>
-    </div>
-  </footer>
 );
 
 // Main Page Component

@@ -26,11 +26,11 @@ const Main = () => (
         height={50}
         className="mx-auto my-2"
       />
-      <p className='text-center'>Paiment sécurisé via Stripe</p>
+      <p className='text-center'>Paiment CB sécurisé via Stripe</p>
     </div>
     <p className='text-center text-gray-300 text-sm mx-auto max-w-6xl px-4 py-8'>
       <strong>Attention :</strong> Nous ne garantissons pas que les vues achetées augmenteront le nombre de vues
-      affichées sur votre vidéo YouTube. Les vues achetées peuvent être retardées ou supprimées par YouTube.
+      affichées sur votre vidéo YouTube. Les vues achetées peuvent être retardées ou supprimées par YouTube. Le taux de rétention des vues peut varier en fonction de la qualité de votre vidéo et de votre public cible.
     </p>
     <br />
     <br />

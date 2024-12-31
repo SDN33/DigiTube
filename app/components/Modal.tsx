@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Lock, AlertCircle } from 'lucide-react';
-import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { loadStripe } from '@stripe/stripe-js';
 
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 interface ModalProps {
   isOpen: boolean;
@@ -38,11 +39,34 @@ const ModalContent = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice 
         url,
         email,
         views: selectedViews,
-        amount: selectedPrice
+        amount: selectedPrice,
       });
+      const stripe = await stripePromise;
+
+      if (stripe) {
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            price: selectedPrice,
+            email,
+          }),
+        });
+
+        const session = await response.json();
+
+        if (session.id) {
+          await stripe.redirectToCheckout({ sessionId: session.id });
+        } else {
+          setError('Impossible de créer une session de paiement.');
+        }
+      }
+
       onClose();
     } catch {
-      setError("Une erreur est survenue lors du traitement de votre demande.");
+      setError("Une erreur est survenue lors du traitement de votre demande. Veuillez réessayer plus tard.");
     } finally {
       setIsProcessing(false);
     }
@@ -78,7 +102,7 @@ const ModalContent = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice 
           </div>
 
           <div className="mb-6">
-            <label htmlFor="url" className="block text-sm font-medium text-gray-600 mt-2">Votre email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-600 mt-2">Votre email</label>
             <input
               id="email"
               type="email"
@@ -103,36 +127,14 @@ const ModalContent = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice 
               disabled={isProcessing}
               className="w-full bg-black hover:bg-gray-700 text-white py-3 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-                {isProcessing ? (
-                  'Traitement en cours...'
-                ) : (
-                  <>
-                      <PayPalButtons
-                        style={{ layout: "horizontal" }}
-                        forceReRender={[selectedPrice]}
-                        createOrder={(_data, actions) => {
-                          return actions.order.create({
-                            intent: "CAPTURE",
-                            purchase_units: [{
-                              amount: {
-                                currency_code: "EUR",
-                                value: selectedPrice
-                              }
-                            }]
-                          });
-                        }}
-                        onApprove={async (_data, actions) => {
-                          setIsProcessing(true);
-                          if (actions.order) {
-                            await actions.order.capture();
-                            await handleSubmit({ preventDefault: () => {} } as React.FormEvent);
-                          }
-                        }}
-                      />
-                    <span>Payer {selectedPrice}€</span>
-                    <Lock className="w-4 h-4" />
-                  </>
-                )}
+              {isProcessing ? (
+                'Traitement en cours...'
+              ) : (
+                <>
+                  <span>Payer {selectedPrice}€</span>
+                  <Lock className="w-4 h-4" />
+                </>
+              )}
             </button>
             <button
               type="button"
@@ -153,18 +155,7 @@ const ModalContent = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice 
 };
 
 const Modal = (props: ModalProps) => {
-  return (
-    <PayPalScriptProvider
-      options={{
-        clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '',
-        components: "buttons",
-        cache: true,
-        debug: false
-      }}
-    >
-      <ModalContent {...props} />
-    </PayPalScriptProvider>
-  );
+  return <ModalContent {...props} />;
 };
 
 export default Modal;

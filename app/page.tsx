@@ -1,120 +1,10 @@
 'use client';
-import { TrendingUp, CheckCircle, AlertCircle, MessageCircleHeart } from 'lucide-react';
-import { useState } from 'react';
+import { MessageCircleHeart } from 'lucide-react';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Modal from './components/Modal';
 import Image from 'next/image';
+import Tab from './components/Tab';
 
-
-interface PaymentDetails {
-  url: string;
-  amount: string;
-  views: string;
-}
-
-interface PaymentHandlerProps {
-  onSuccess?: (details: PaymentDetails) => void;
-  onError?: (error: string) => void;
-}
-
-const usePaymentHandler = ({ onSuccess, onError }: PaymentHandlerProps = {}) => {
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const validateYoutubeUrl = (url: string): boolean => {
-    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/;
-    return youtubeRegex.test(url);
-  };
-
-  const getPackDetails = (views: string): { amount: string } | null => {
-    const packMapping: Record<string, string> = {
-      "100": "2",
-      "1,000": "15",
-      "10,000": "79",
-      "100,000": "799"
-    };
-
-    return views in packMapping ? { amount: packMapping[views] } : null;
-  };
-
-  const handlePayment = async (url: string, selectedViews: string) => {
-    try {
-      setIsProcessing(true);
-      setError(null);
-
-      if (!validateYoutubeUrl(url)) {
-        throw new Error("L'URL YouTube n'est pas valide. Veuillez entrer une URL de vidéo YouTube valide.");
-      }
-
-      const packDetails = getPackDetails(selectedViews);
-      if (!packDetails) {
-        throw new Error("Pack de vues non valide.");
-      }
-
-      const paymentDetails: PaymentDetails = {
-        url,
-        amount: packDetails.amount,
-        views: selectedViews
-      };
-
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      onSuccess?.(paymentDetails);
-      return paymentDetails;
-
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Une erreur est survenue lors du traitement du paiement.";
-      setError(errorMessage);
-      onError?.(errorMessage);
-      throw err;
-    } finally {
-      setIsProcessing(false);
-    }
-  };
-
-  return {
-    handlePayment,
-    isProcessing,
-    error,
-    validateYoutubeUrl
-  };
-};
-
-const MainContent = ({ views, price }: { views: string; price: string }) => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const { handlePayment } = usePaymentHandler();
-
-  const handleSubmit = async (details: { url: string; email: string; views: string; amount: string }) => {
-    await handlePayment(details.url, details.views);
-  };
-
-  return (
-    <>
-      <button
-      onClick={() => setModalOpen(true)}
-      className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full transition-colors"
-      >
-      Acheter maintenant
-      </button>
-      <Modal
-      isOpen={isModalOpen}
-      onClose={() => setModalOpen(false)}
-      onSubmit={handleSubmit}
-      selectedViews={views}
-      selectedPrice={price}
-      />
-    </>
-  );
-};
-
-// Données des packs
-const packs = [
-  { vues: "100", prix: "2", prixNormal: "5" },
-  { vues: "1,000", prix: "15", prixNormal: "18" },
-  { vues: "10,000", prix: "79", prixNormal: "99" },
-  { vues: "100,000", prix: "799", prixNormal: "999" },
-];
 
 // Main Component
 const Main = () => (
@@ -128,59 +18,7 @@ const Main = () => (
           <br /> Augmentez votre visibilité sur YouTube et gagnez en popularité !
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        {packs.map((pack) => (
-          <div key={pack.vues} className="bg-white/10 backdrop-blur-lg rounded-lg overflow-hidden">
-            <div className="bg-red-600 p-4 text-center">
-              <h3 className="text-xl">{pack.vues} Vues</h3>
-            </div>
-            <div className="p-6 text-center flex flex-col justify-center items-center">
-              <div className="mb-4">
-                <span className="text-4xl font-bold">{pack.prix}€</span>
-                <div className="text-sm text-gray-300">Prix normal : {pack.prixNormal}€</div>
-              </div>
-              <ul className="text-center space-y-3 mb-6">
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  Vues 100% Réelles
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  Livraison sur mesure
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  Garantie & Sécurisé
-                </li>
-              </ul>
-              <MainContent views={pack.vues} price={pack.prix} />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="grid md:grid-cols-3 gap-6 mb-6">
-        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg flex flex-col items-center">
-          <div className="flex items-center mb-4">
-            <TrendingUp className="mr-2" />
-            <h3 className="text-xl font-semibold">Vues Réelles</h3>
-          </div>
-          <p className='text-center'>Des vues de haute qualité provenant d&apos;utilisateurs réels</p>
-        </div>
-        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg flex flex-col items-center">
-          <div className="flex items-center mb-4">
-            <CheckCircle className="mr-2" />
-            <h3 className="text-xl font-semibold">Sûr & Sécurisé</h3>
-          </div>
-          <p className='text-center'>100% conforme aux politiques YouTube pour protéger votre chaîne</p>
-        </div>
-        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg flex flex-col items-center">
-          <div className="flex items-center mb-4">
-            <AlertCircle className="mr-2" />
-            <h3 className="text-xl font-semibold">Support 24/7</h3>
-          </div>
-          <p className='text-center'>Une assistance clientèle disponible 24h/24 et 7j/7</p>
-        </div>
-      </div>
+      <Tab />
     </div>
     <p className='text-center text-gray-300 text-sm mx-auto max-w-6xl px-4 py-8'>
       <strong>Attention :</strong> Nous ne garantissons pas que les vues achetées augmenteront le nombre de vues

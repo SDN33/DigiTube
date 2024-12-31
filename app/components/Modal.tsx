@@ -4,7 +4,7 @@ import { Lock, AlertCircle } from 'lucide-react';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (details: { url: string; email: string; views: string; amount: string }) => void;
+  onSubmit: (details: { url: string; email: string; views: string; amount: string }) => Promise<void>;
   selectedViews: string;
   selectedPrice: string;
 }

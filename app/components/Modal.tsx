@@ -11,7 +11,7 @@ interface ModalProps {
   selectedPrice: string;
 }
 
-const Modal = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice }: ModalProps) => {
+const ModalContent = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice }: ModalProps) => {
   const [url, setUrl] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -104,37 +104,34 @@ const Modal = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice }: Moda
               className="w-full bg-black hover:bg-gray-700 text-white py-3 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
                 {isProcessing ? (
-                'Traitement en cours...'
+                  'Traitement en cours...'
                 ) : (
-                <>
-                  <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '' }}>
-                    <PayPalButtons
-                  style={{ layout: "horizontal" }}
-                  createOrder={(_data, actions) => {
-                    return actions.order.create({
-                    intent: "CAPTURE",
-                    purchase_units: [
-                      {
-                      amount: {
-                        currency_code: "EUR",
-                        value: selectedPrice
-                      }
-                      }
-                    ]
-                    });
-                  }}
-                    onApprove={async (_data, actions) => {
-                      setIsProcessing(true);
-                      if (actions.order) {
-                        await actions.order.capture();
-                        await handleSubmit({ preventDefault: () => {} } as React.FormEvent);
-                      }
-                    }}
-                  />
-                  </PayPalScriptProvider>
-                  <span>Payer {selectedPrice}€</span>
-                  <Lock className="w-4 h-4" />
-                </>
+                  <>
+                      <PayPalButtons
+                        style={{ layout: "horizontal" }}
+                        forceReRender={[selectedPrice]}
+                        createOrder={(_data, actions) => {
+                          return actions.order.create({
+                            intent: "CAPTURE",
+                            purchase_units: [{
+                              amount: {
+                                currency_code: "EUR",
+                                value: selectedPrice
+                              }
+                            }]
+                          });
+                        }}
+                        onApprove={async (_data, actions) => {
+                          setIsProcessing(true);
+                          if (actions.order) {
+                            await actions.order.capture();
+                            await handleSubmit({ preventDefault: () => {} } as React.FormEvent);
+                          }
+                        }}
+                      />
+                    <span>Payer {selectedPrice}€</span>
+                    <Lock className="w-4 h-4" />
+                  </>
                 )}
             </button>
             <button
@@ -152,6 +149,21 @@ const Modal = ({ isOpen, onClose, onSubmit, selectedViews, selectedPrice }: Moda
         </form>
       </div>
     </div>
+  );
+};
+
+const Modal = (props: ModalProps) => {
+  return (
+    <PayPalScriptProvider
+      options={{
+        clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '',
+        components: "buttons",
+        cache: true,
+        debug: false
+      }}
+    >
+      <ModalContent {...props} />
+    </PayPalScriptProvider>
   );
 };
 

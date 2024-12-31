@@ -106,11 +106,10 @@ const Main = () => (
     <div className="max-w-6xl mx-auto px-4">
       <Header />
       <div className="flex flex-col items-center pb-8">
-        <h2 className="text-3xl lg:text-5xl mb-4 font-bold">Acheter des Vues Youtube pour vos vidéos</h2>
+        <h2 className="text-3xl lg:text-5xl mb-4 font-bold flex justify-center mx-auto text-center">Acheter des Vues Youtube pour vos vidéos</h2>
         <p className="text-xl text-gray-200 text-center">
           Nous vous proposons d&apos;acheter des vues YouTube de haute qualité 100% réelles et propulsées par des utilisateurs réels.
-          <br /><br /> Augmentez votre visibilité sur YouTube
-          <br /><br /> Explosez votre compteur !
+          <br /> Augmentez votre visibilité sur YouTube et gagnez en popularité !
         </p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -119,12 +118,12 @@ const Main = () => (
             <div className="bg-red-600 p-4 text-center">
               <h3 className="text-xl">{pack.vues} Vues</h3>
             </div>
-            <div className="p-6 text-center">
+            <div className="p-6 text-center flex flex-col justify-center items-center">
               <div className="mb-4">
                 <span className="text-4xl font-bold">{pack.prix}€</span>
                 <div className="text-sm text-gray-300">Prix normal : {pack.prixNormal}€</div>
               </div>
-              <ul className="text-left space-y-3 mb-6">
+              <ul className="text-center space-y-3 mb-6">
                 <li className="flex items-center">
                   <CheckCircle className="w-5 h-5 mr-2" />
                   Vues 100% Réelles
@@ -144,30 +143,30 @@ const Main = () => (
         ))}
       </div>
       <div className="grid md:grid-cols-3 gap-6 mb-6">
-        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg">
+        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg flex flex-col items-center">
           <div className="flex items-center mb-4">
             <TrendingUp className="mr-2" />
             <h3 className="text-xl font-semibold">Vues Réelles</h3>
           </div>
-          <p>Des vues de haute qualité provenant d&apos;utilisateurs réels</p>
+          <p className='text-center'>Des vues de haute qualité provenant d&apos;utilisateurs réels</p>
         </div>
-        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg">
+        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg flex flex-col items-center">
           <div className="flex items-center mb-4">
             <CheckCircle className="mr-2" />
             <h3 className="text-xl font-semibold">Sûr & Sécurisé</h3>
           </div>
-          <p>100% conforme aux politiques YouTube pour protéger votre chaîne</p>
+          <p className='text-center'>100% conforme aux politiques YouTube pour protéger votre chaîne</p>
         </div>
-        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg">
+        <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg flex flex-col items-center">
           <div className="flex items-center mb-4">
             <AlertCircle className="mr-2" />
             <h3 className="text-xl font-semibold">Support 24/7</h3>
           </div>
-          <p>Une assistance clientèle disponible 24h/24 et 7j/7</p>
+          <p className='text-center'>Une assistance clientèle disponible 24h/24 et 7j/7</p>
         </div>
       </div>
     </div>
-    <p className='text-center text-gray-300 text-sm'>
+    <p className='text-center text-gray-300 text-sm mx-auto max-w-6xl px-4 py-8'>
       <strong>Attention :</strong> Nous ne garantissons pas que les vues achetées augmenteront le nombre de vues
       affichées sur votre vidéo YouTube. Les vues achetées peuvent être retardées ou supprimées par YouTube.
     </p>

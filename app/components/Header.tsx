@@ -1,5 +1,5 @@
 // Header Component
-import { Youtube } from 'lucide-react';
+import { Instagram, Youtube } from 'lucide-react';
 
 const Header = () => (
   <header className="text-center py-16">
@@ -10,6 +10,7 @@ const Header = () => (
     <nav>
       <a href="#about" className="mr-4 hover:underline">À PROPOS</a>
       <a href="#contact" className="hover:underline">CONTACT</a>
+      <a href="https://intagram.com/digitube" className="ml-4 hover:underline inline-flex items-center">INSTAGRAM&nbsp; <Instagram className="w-5 h-5 ml-1" /></a>
     </nav>
   </header>
 );

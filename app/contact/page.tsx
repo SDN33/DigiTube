@@ -30,7 +30,7 @@ export default function ContactPage() {
       <Header />
       <h1 className="text-3xl font-bold mb-6">Contactez-nous</h1>
       <div className="max-w-lg mx-auto">
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" action="https://formspree.io/f/xpwwyaep" method="POST">
           <div>
             <label htmlFor="name" className="block mb-2">Nom</label>
             <input
@@ -39,7 +39,7 @@ export default function ContactPage() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded text-black"
               required
             />
           </div>
@@ -51,7 +51,7 @@ export default function ContactPage() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded text-black"
               required
             />
           </div>
@@ -62,7 +62,7 @@ export default function ContactPage() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full p-2 border rounded h-32"
+              className="w-full p-2 border rounded h-32 text-black"
               required
             />
           </div>

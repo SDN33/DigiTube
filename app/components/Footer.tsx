@@ -33,14 +33,16 @@ const Footer = () => (
 
       <div>
         <h2 className="text-lg font-bold mb-4">NOS SERVICES</h2>
-        <p className="text-sm">ACHAT VUES 100% RÉEL YOUTUBE</p>
+        <a href="https://digitube.buzz/">Achat de vues YouTube</a>
+        <br />
+        <a href="https://digiload.online/">Canva Pro Gratuit</a>
         <nav className="mt-4 space-x-4 text-sm">
           <a href="#about" className="hover:underline">À PROPOS</a>
           <a href="#contact" className="hover:underline">CONTACT</a>
         </nav>
       </div>
       <p className="mt-4 text-sm text-center flex align-center justify-center col-span-4">
-        © 2021 DigiTube. Tous droits réservés. Paiements sécurisés via PayPal.
+        © 2025 DigiTube. Tous droits réservés. Paiements sécurisés via Stripe.
       </p>
       <p className="text-sm text-center flex align-center justify-center col-span-4">
           Site propulsé par &nbsp;<a href="https://stillinov.com" className="underline">Still-inov Agency</a>

@@ -19,6 +19,14 @@ const Main = () => (
         </p>
       </div>
       <Tab />
+      <Image
+        src="/images/stripe.png"
+        alt="Paiement sécurisé via Stripe"
+        width={200}
+        height={50}
+        className="mx-auto my-2"
+      />
+      <p className='text-center'>Paiment sécurisé via Stripe</p>
     </div>
     <p className='text-center text-gray-300 text-sm mx-auto max-w-6xl px-4 py-8'>
       <strong>Attention :</strong> Nous ne garantissons pas que les vues achetées augmenteront le nombre de vues

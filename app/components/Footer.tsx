@@ -1,5 +1,6 @@
 import React from 'react';
 import { Youtube, Facebook, Twitter, Instagram, Mail, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -109,6 +110,13 @@ const Footer = () => {
               Still-inov Agency
             </a>
           </p>
+          <Image
+            src="/images/paiement-securise.png"
+            alt="Paiement sécurisé via Stripe"
+            width={250}
+            height={50}
+            className="mx-auto my-4"
+          />
         </div>
       </div>
     </footer>

@@ -40,7 +40,7 @@ const Footer = () => {
               {socialLinks.map(({ Icon, href, color }) => (
                 <a key={color} href={href}
                    className={`${color} hover:opacity-80 transition-opacity`}>
-                  <Icon className="w-6 h-6" />
+                  <Icon className="w-6 h-6" /> Rejoignez nous sur Instagram !
                 </a>
               ))}
             </div>

@@ -8,7 +8,12 @@ import Tab from './components/Tab';
 
 // Main Component
 const Main = () => (
-  <main className="min-h-screen bg-gradient-to-t from-purple-900 to-[#5e17eb] text-white">
+  <main className="min-h-screen text-white" style={{
+    backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 1000"><rect fill="#330055" width="100" height="1000"/><g fill-opacity="1"><circle  fill="#1111" cx="50" cy="0" r="50"/><g fill="#3a015d" ><circle cx="0" cy="50" r="50"/><circle cx="100" cy="50" r="50"/></g><circle  fill="#410165" cx="50" cy="100" r="50"/><g fill="#48026e" ><circle cx="0" cy="150" r="50"/><circle cx="100" cy="150" r="50"/></g><circle  fill="#500376" cx="50" cy="200" r="50"/><g fill="#57047e" ><circle cx="0" cy="250" r="50"/><circle cx="100" cy="250" r="50"/></g><circle  fill="#5f0587" cx="50" cy="300" r="50"/><g fill="#67068f" ><circle cx="0" cy="350" r="50"/><circle cx="100" cy="350" r="50"/></g><circle  fill="#6f0798" cx="50" cy="400" r="50"/><g fill="#7707a0" ><circle cx="0" cy="450" r="50"/><circle cx="100" cy="450" r="50"/></g><circle  fill="#8008a9" cx="50" cy="500" r="50"/><g fill="#8909b1" ><circle cx="0" cy="550" r="50"/><circle cx="100" cy="550" r="50"/></g><circle  fill="#9109ba" cx="50" cy="600" r="50"/><g fill="#9a09c3" ><circle cx="0" cy="650" r="50"/><circle cx="100" cy="650" r="50"/></g><circle  fill="#a309cb" cx="50" cy="700" r="50"/><g fill="#ad09d4" ><circle cx="0" cy="750" r="50"/><circle cx="100" cy="750" r="50"/></g><circle  fill="#b608dc" cx="50" cy="800" r="50"/><g fill="#c007e5" ><circle cx="0" cy="850" r="50"/><circle cx="100" cy="850" r="50"/></g><circle  fill="#c905ee" cx="50" cy="900" r="50"/><g fill="#d303f6" ><circle cx="0" cy="950" r="50"/><circle cx="100" cy="950" r="50"/></g><circle  fill="#D0F" cx="50" cy="1000" r="50"/></g></svg>')}")`,
+    backgroundRepeat: 'repeat',
+    backgroundSize: '100px 1000px',
+    backgroundAttachment: 'fixed'
+  }}>
     <div className="max-w-6xl mx-auto px-4">
       <Header />
       <div className="flex flex-col items-center pb-8">
@@ -59,6 +64,7 @@ const Main = () => (
         <p className='text-lg text-gray-200 text-center mb-20 transition-transform duration-300 hover:scale-105 cursor-pointer'>
           L&apos;achat de vues YouTube sur DigiTube est simple et rapide. Il vous suffit de choisir le nombre de vues que vous souhaitez acheter, de saisir l&apos;URL de votre vidéo YouTube et de procéder au paiement. Une fois votre paiement effectué, nous commencerons à ajouter des vues à votre vidéo YouTube dans un delais de 24h/48h . Vous verrez les vues augmenter en temps réel et vous pourrez suivre l&apos;évolution de votre vidéo sur YouTube Analytics. Nos vues sont 100% réelles et proviennent de comptes YouTube actifs. Vous pouvez acheter des vues YouTube en toute confiance sur DigiTube.
         </p>
+        <div className="space-y-4"></div>
 
         <br />
         <div className='border-t border-gray-800'></div>

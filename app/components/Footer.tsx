@@ -38,7 +38,7 @@ const Footer = () => {
             </address>
             <div className="flex space-x-4 pt-4">
               {socialLinks.map(({ Icon, href, color }) => (
-                <a key={color} href={href} className={`${color} hover:opacity-80 transition-opacity flex items-center space-x-2`}><Icon className="w-6 h-6" /><span>Rejoignez nous sur Instagram !</span></a>
+                <a key={color} href={href} className={`${color} hover:opacity-80 transition-opacity flex items-center space-x-2`}><Icon className="w-6 h-6" /><span>Rejoignez nous sur Instagram</span></a>
               ))}
             </div>
           </div>

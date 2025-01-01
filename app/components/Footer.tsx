@@ -1,14 +1,12 @@
 import React from 'react';
-import { Youtube, Facebook, Twitter, Instagram, Mail, MapPin } from 'lucide-react';
+import { Youtube, Instagram, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { Icon: Facebook, href: "#", color: "text-blue-500" },
-    { Icon: Twitter, href: "#", color: "text-blue-400" },
-    { Icon: Instagram, href: "#", color: "text-pink-500" },
+    { Icon: Instagram, href: "https://www.instagram.com/digitube__buzz/", color: "text-pink-500" },
   ];
 
   return (

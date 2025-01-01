@@ -1,5 +1,5 @@
 import React from 'react';
-import { Youtube, Instagram, Mail, MapPin } from 'lucide-react';
+import { Youtube, Instagram, Mail, MapPin, PhoneCallIcon } from 'lucide-react';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -17,7 +17,12 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2 mb-6">
               <Youtube className="w-10 h-10 text-red-500" />
-              <h1 className="text-2xl font-bold">DigiTube</h1>
+              <h3 className="text-2xl font-bold">DigiTube</h3>
+            </div>
+            <div className="flex">
+              {socialLinks.map(({ Icon, href, color }) => (
+                <a key={color} href={href} className={`${color} hover:opacity-80 transition-opacity flex items-center space-x-2`}><Icon className="w-6 h-6" /><span>Instagram</span></a>
+              ))}
             </div>
             <address className="not-italic space-y-2">
               <div className="flex items-center space-x-2">
@@ -35,18 +40,20 @@ const Footer = () => {
                   stillinovagency@gmail.com
                 </a>
               </div>
+              <div className="flex items-center space-x-2">
+                <PhoneCallIcon className="w-4 h-4" />
+                <a href="tel:+33612345678"
+                   className="text-sm hover:text-red-400 transition-colors">
+                  +33 6 09 24 95 09 &nbsp;(WhatsApp)
+                </a>
+              </div>
             </address>
-            <div className="flex space-x-4 pt-4">
-              {socialLinks.map(({ Icon, href, color }) => (
-                <a key={color} href={href} className={`${color} hover:opacity-80 transition-opacity flex items-center space-x-2`}><Icon className="w-6 h-6" /><span>Rejoignez nous sur Instagram</span></a>
-              ))}
-            </div>
           </div>
 
           {/* Section À Propos */}
           <div className="space-y-4">
-            <h2 className="text-lg font-bold text-red-400">À PROPOS</h2>
-            <p className="text-sm text-gray-300 leading-relaxed">
+            <h2 className="text-lg font-bold text-red-400 text-center">À PROPOS</h2>
+            <p className="text-sm text-gray-300 leading-relaxed text-center">
               Avec DigiTube vous pouvez acheter des vues YouTube de haute qualité
               100% réelles et propulsées par des utilisateurs réels.
             </p>
@@ -54,8 +61,8 @@ const Footer = () => {
 
           {/* Section FAQ */}
           <div className="space-y-4">
-            <h2 className="text-lg font-bold text-red-400">Nos FAQ</h2>
-            <ul className="space-y-2">
+            <h2 className="text-lg font-bold text-red-400 text-center">NOS FAQ</h2>
+            <ul className="space-y-2 text-center">
               <li>
                 <a href="#" className="text-sm text-gray-300 hover:text-white hover:underline transition-colors">
                   Pourquoi acheter des vues YouTube ?
@@ -71,8 +78,8 @@ const Footer = () => {
 
           {/* Section Services */}
           <div className="space-y-4">
-            <h2 className="text-lg font-bold text-red-400">NOS SERVICES</h2>
-            <div className="space-y-2">
+            <h2 className="text-lg font-bold text-red-400 text-center">NOS SERVICES</h2>
+            <div className="space-y-2 text-center">
               <a href="https://digitube.buzz/"
                  className="block text-sm text-gray-300 hover:text-white hover:underline transition-colors">
                 Achat de vues YouTube
@@ -82,7 +89,7 @@ const Footer = () => {
                 Canva Pro Gratuit
               </a>
             </div>
-            <nav className="pt-2 space-y-2">
+            <nav className="space-y-2 text-center">
               <a href="#about" className="block text-sm text-gray-300 hover:text-white hover:underline transition-colors">
                 À PROPOS
               </a>

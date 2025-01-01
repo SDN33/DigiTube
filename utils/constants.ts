@@ -13,8 +13,8 @@ export const packs: Pack[] = [
   { vues: "10,000", prix: 54.50, prixNormal: 75, rawViews: 10000 },
   { vues: "25,000", prix: 115, prixNormal: 159, rawViews: 25000 },
   { vues: "100,000", prix: 298.50, prixNormal: 399, rawViews: 100000 },
-  { vues: "250,000", prix: 823.50, prixNormal: 823.5, rawViews: 250000 },
-  { vues: "500,000", prix: 1298.50, prixNormal: 1598.5, rawViews: 500000 },
+  { vues: "250,000", prix: 823.50, prixNormal: 999, rawViews: 250000 },
+  { vues: "500,000", prix: 1298.50, prixNormal: 1599, rawViews: 500000 },
 ];
 
 export const PRICE_MAP: Record<number, { unit_amount: number }> = {

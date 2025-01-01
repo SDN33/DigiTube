@@ -51,8 +51,8 @@ export const packs: Pack[] = [
   { vues: "10,000", prix: 54.50, prixNormal: 75 },
   { vues: "25,000", prix: 115, prixNormal: 159 },
   { vues: "100,000", prix: 298.50, prixNormal: 399 },
-  { vues: "250,000", prix: 823.50, prixNormal: 823.50 },
-  { vues: "500,000", prix: 1298.50, prixNormal: 1598.50 },
+  { vues: "250,000", prix: 823.50, prixNormal: 999 },
+  { vues: "500,000", prix: 1298.50, prixNormal: 1599 },
 ];
 
 export default function Tab() {

@@ -22,16 +22,23 @@ const Main = () => (
           Nous vous proposons d&apos;acheter des vues YouTube de haute qualité 100% réelles et propulsées par des utilisateurs réels.
           <br /> Augmentez votre visibilité sur YouTube et gagnez en popularité !
         </p>
-      </div>
-      <Tab />
-      <Image
+        <Image
         src="/images/stripe.png"
         alt="Paiement sécurisé via Stripe"
-        width={200}
+        width={150}
         height={50}
-        className="mx-auto my-2"
-      />
-      <p className='text-center'>Paiment CB sécurisé via Stripe</p>
+        className="mx-auto my-2 mt-4"
+        />
+        <p className='text-center text-xs'>Paiment CB sécurisé via Stripe</p>
+      </div>
+      <Tab />
+    </div>
+    <br />
+    <div>
+      <p className='text-center text-2xl font-bold mb-4'>Retrouvez aussi nos offres de likes YouTube</p>
+      <button className='flex justify-center mx-auto'>
+        <a href="/likes" className='text-white bg-red-600 hover:bg-red-700 py-3 px-6 rounded-lg'>Acheter Likes Youtube</a>
+      </button>
     </div>
     <p className='text-center text-gray-300 text-sm mx-auto max-w-6xl px-4 py-8'>
       <strong>Attention :</strong> Nous ne garantissons pas que les vues / likes achetées augmenteront le nombre de vues
@@ -75,7 +82,7 @@ const Main = () => (
               <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 1</h3>
             </div>
-            <p>Je ne savais pas trop à quoi m’attendre en achetant des vues, mais DigiTube a vraiment livré. Les vues sont arrivées rapidement et ma vidéo a gagné en popularité. Ça m’a donné un coup de pouce pour lancer ma chaîne. Merci !</p>
+            <p>Je ne savais pas trop à quoi m&apos;attendre en achetant des vues, mais DigiTube a vraiment livré. Les vues sont arrivées rapidement et ma vidéo a gagné en popularité. Ça m’a donné un coup de pouce pour lancer ma chaîne. Merci !</p>
             <p className='mt-4 text-sm text-gray-300'>- Claire L.</p>
           </div>
           <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
@@ -83,7 +90,7 @@ const Main = () => (
               <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 2</h3>
             </div>
-            <p>Honnêtement, j’étais sceptique au début, mais après avoir vu ma vidéo passer de 200 à 10 000 vues, je suis convaincu ! Le service est simple et rapide, et les vues semblent vraiment authentiques. Une très bonne expérience.</p>
+            <p>Honnêtement, j&apos;étais sceptique au début, mais après avoir vu ma vidéo passer de 200 à 10 000 vues, je suis convaincu ! Le service est simple et rapide, et les vues semblent vraiment authentiques. Une très bonne expérience.</p>
             <p className='mt-4 text-sm text-gray-300'>- Yann P.</p>
           </div>
           <div className='bg-white/10 backdrop-blur-lg p-6 rounded-lg'>
@@ -91,7 +98,7 @@ const Main = () => (
               <MessageCircleHeart className='w-8 h-8 mr-2' />
               <h3 className='text-xl font-semibold'>Témoignage 3</h3>
             </div>
-            <p>J’ai utilisé DigiTube pour booster une de mes vidéos avant un lancement important. Les résultats ont dépassé mes attentes ! Ça m’a permis d’attirer un public plus large. Je referai appel à eux, c’est sûr.</p>
+            <p>J&apos;ai utilisé DigiTube pour booster une de mes vidéos avant un lancement important. Les résultats ont dépassé mes attentes ! Ça m’a permis d’attirer un public plus large. Je referai appel à eux, c’est sûr.</p>
             <p className='mt-4 text-sm text-gray-300'>- Sonia T.</p>
           </div>
         </div>

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Modal from '../components/LikeModal';
 import { useStripePaymentHandler } from '../../utils/usePaymentHandler';
+import Link from 'next/link';
 
 // MainContent Component
 const MainContent = ({ likes, price }: { likes: string; price: string }) => {
@@ -105,16 +106,23 @@ const Main = () => (
           Nous vous proposons d&apos;acheter des likes YouTube de haute qualité 100% réels et provenant d&apos;utilisateurs actifs.
           <br /> Augmentez votre engagement et votre crédibilité sur YouTube !
         </p>
+          <Image
+          src="/images/stripe.png"
+          alt="Paiement sécurisé via Stripe"
+          width={150}
+          height={50}
+          className="mx-auto my-2 mt-4"
+          />
+          <p className='text-center text-xs'>Paiment CB sécurisé via Stripe</p>
       </div>
       <Tab />
-      <Image
-        src="/images/stripe.png"
-        alt="Paiement sécurisé via Stripe"
-        width={200}
-        height={50}
-        className="mx-auto my-2"
-      />
-      <p className='text-center'>Paiment CB sécurisé via Stripe</p>
+    </div>
+    <br />
+    <div>
+      <p className='text-center text-2xl font-bold mb-4'>Retrouvez aussi nos offres de vues YouTube</p>
+      <button className='flex justify-center mx-auto'>
+        <Link href="/" className='text-white bg-red-600 hover:bg-red-700 py-3 px-6 rounded-lg'>Acheter Vues Youtube</Link>
+      </button>
     </div>
     <p className='text-center text-gray-300 text-sm mx-auto max-w-6xl px-4 py-8'>
       <strong>Attention :</strong> Nous ne garantissons pas que les likes achetés resteront de façon permanente sur votre vidéo YouTube.

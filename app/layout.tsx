@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://digitube.buzz"),
   keywords: [
     "YouTube",
+    "promotion YouTube",
+    "promo YouTube",
     "vues youtube",
     "likes",
     "abonnés youtube",
@@ -32,6 +34,7 @@ export const metadata: Metadata = {
     "vues YouTube pas cher",
     "acheter des likes YouTube",
     "likes YouTube pas cher",
+    "acheter vues YouTube pas cher",
 
   ],
   icons: {

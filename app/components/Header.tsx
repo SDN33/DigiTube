@@ -9,9 +9,10 @@ const Header = () => (
       <h1 className="text-5xl font-bold">DigiTube</h1>
     </Link>
     <nav>
-      <a href="#about" className="mr-4 hover:underline">À PROPOS</a>
-      <a href="/contact" className="hover:underline">CONTACT</a>
-      <a href="https://digiload.online" className="ml-4 hover:underline inline-flex items-center">CANVA PRO GRATUIT</a>
+      <Link href="#about" className="mr-4 hover:underline">À PROPOS</Link>
+      <Link href="/likes" className="mr-4 hover:underline">ACHETER LIKES YOUTUBE</Link>
+      <Link href="https://digiload.online" className="mr-4 hover:underline">CANVA PRO GRATUIT</Link>
+      <Link href="/contact" className="hover:underline">CONTACT</Link>
     </nav>
   </header>
 );

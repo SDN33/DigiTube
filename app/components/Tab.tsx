@@ -9,7 +9,7 @@ const MainContent = ({ views, price }: { views: string; price: string }) => {
   const { handlePayment } = useStripePaymentHandler();
 
   const handleSubmit = async (details: { url: string; email: string; views: string }) => {
-    await handlePayment(details.url, views);
+    await handlePayment({ url: details.url, views: details.views, type: 'views' });
   };
 
   return (

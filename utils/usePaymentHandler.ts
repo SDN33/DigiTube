@@ -1,15 +1,20 @@
-
-// useStripePaymentHandler.ts
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
+interface PaymentDetails {
+  url: string;
+  views?: string;
+  likes?: string;
+  type: 'views' | 'likes';
+}
+
 export const useStripePaymentHandler = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handlePayment = async (url: string, selectedViews: string) => {
+  const handlePayment = async ({ url, views, likes, type }: PaymentDetails) => {
     try {
       setIsProcessing(true);
       setError(null);
@@ -31,7 +36,9 @@ export const useStripePaymentHandler = () => {
         },
         body: JSON.stringify({
           url,
-          views: selectedViews,
+          views: type === 'views' ? views : undefined,
+          likes: type === 'likes' ? likes : undefined,
+          serviceType: type,
         }),
       });
 
@@ -51,8 +58,27 @@ export const useStripePaymentHandler = () => {
     }
   };
 
+  // Fonctions d'aide spécifiques pour chaque type de service
+  const handleViewsPayment = async (url: string, selectedViews: string) => {
+    return handlePayment({
+      url,
+      views: selectedViews,
+      type: 'views'
+    });
+  };
+
+  const handleLikesPayment = async (url: string, selectedLikes: string) => {
+    return handlePayment({
+      url,
+      likes: selectedLikes,
+      type: 'likes'
+    });
+  };
+
   return {
     handlePayment,
+    handleViewsPayment,
+    handleLikesPayment,
     isProcessing,
     error,
   };

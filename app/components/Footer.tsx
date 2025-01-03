@@ -15,14 +15,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 my-10">
           {/* Section Logo et Contact */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2 mb-6">
+            <div className="flex items-center space-x-2 mb-2">
               <Youtube className="w-10 h-10 text-red-500" />
               <h3 className="text-2xl font-bold">DigiTube</h3>
-            </div>
-            <div className="flex">
-              {socialLinks.map(({ Icon, href, color }) => (
-                <a key={color} href={href} className={`${color} hover:opacity-80 transition-opacity flex items-center space-x-2`}><Icon className="w-6 h-6" /><span>Instagram</span></a>
-              ))}
             </div>
             <address className="not-italic space-y-2">
               <div className="flex items-center space-x-2">
@@ -54,7 +49,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-red-400 text-center">À PROPOS</h2>
             <p className="text-sm text-gray-300 leading-relaxed text-center">
-              Avec DigiTube vous pouvez acheter des vues YouTube de haute qualité
+              Avec DigiTube vous pouvez acheter des vues et likes YouTube de haute qualité
               100% réelles et propulsées par des utilisateurs réels.
             </p>
           </div>
@@ -64,8 +59,13 @@ const Footer = () => {
             <h2 className="text-lg font-bold text-red-400 text-center">NOS FAQ</h2>
             <ul className="space-y-2 text-center">
               <li>
-                <a href="#" className="text-sm text-gray-300 hover:text-white hover:underline transition-colors">
+                <a href="#about" className="text-sm text-gray-300 hover:text-white hover:underline transition-colors">
                   Pourquoi acheter des vues YouTube ?
+                </a>
+              </li>
+              <li>
+                <a href="/likes/#about" className="text-sm text-gray-300 hover:text-white hover:underline transition-colors">
+                  Pourquoi acheter des likes YouTube ?
                 </a>
               </li>
               <li>
@@ -84,24 +84,28 @@ const Footer = () => {
                  className="block text-sm text-gray-300 hover:text-white hover:underline transition-colors">
                 Achat de vues YouTube
               </a>
+              <a href="https://digitube.buzz/likes"
+                 className="block text-sm text-gray-300 hover:text-white hover:underline transition-colors">
+                Achat de likes YouTube
+              </a>
               <a href="https://digiload.online/"
                  className="block text-sm text-gray-300 hover:text-white hover:underline transition-colors">
                 Canva Pro Gratuit
               </a>
-            </div>
-            <nav className="space-y-2 text-center">
-              <a href="#about" className="block text-sm text-gray-300 hover:text-white hover:underline transition-colors">
-                À PROPOS
-              </a>
               <a href="#contact" className="block text-sm text-gray-300 hover:text-white hover:underline transition-colors">
                 CONTACT
               </a>
-            </nav>
+            </div>
           </div>
         </div>
 
         {/* Copyright section */}
         <div className="pt-8 border-t border-gray-700">
+          <div className="flex justify-center mb-4">
+            {socialLinks.map(({ Icon, href, color }) => (
+              <a key={color} href={href} className={`${color} hover:opacity-80 transition-opacity flex items-center space-x-2`}><Icon className="w-6 h-6" /><span>Instagram</span></a>
+            ))}
+          </div>
           <p className="text-sm text-center text-gray-400">
             © {currentYear} DigiTube. Tous droits réservés. Paiements sécurisés via Stripe.
           </p>

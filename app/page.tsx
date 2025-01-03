@@ -74,6 +74,10 @@ const Main = () => (
         <div className="space-y-4"></div>
 
         <br />
+        {/* INSTAGRAM FEED*/}
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div className="elfsight-app-c03531f9-5155-4aef-bd05-a6dad2fb1590" data-elfsight-app-lazy></div>
+
         <div className='border-t border-gray-800'></div>
         <h2 id="about" className='text-2xl lg:text-3xl mb-4 text-center font-bold py-8 mt-8'>Quelques avis de nos clients...</h2>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12'>

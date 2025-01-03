@@ -36,13 +36,13 @@ const MainContent = ({ likes, price }: { likes: string; price: string }) => {
   );
 };
 
-export interface Pack {
+interface Pack {
   likes: string;
   prix: number;
   prixNormal: number;
 }
 
-export const packs: Pack[] = [
+const packs: Pack[] = [
   { likes: "50", prix: 4.90, prixNormal: 5.90 },
   { likes: "100", prix: 7.90, prixNormal: 9.90 },
   { likes: "250", prix: 12.90, prixNormal: 15.00 },
